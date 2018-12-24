@@ -11,5 +11,7 @@ public class GeneratorOfLabyrinthCommand extends Command {
         app.setHeight(app.getCli().enterInt());
         app.setLab(new RandomLabyrinth(app.getWidth(),app.getHeight()));
         app.getLab().makeWall();
+        app.setCells(app.getLab().getCells());
+        app.setCellsWitnPath(app.getLab().getCells());
     }
 }

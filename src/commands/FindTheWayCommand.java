@@ -2,8 +2,9 @@ package commands;
 
 import main.App;
 
-public class FindTheWayCommand {
+public class FindTheWayCommand extends Command {
     public void execute(App app){
-        //Это место работы Загира.
+        app = app;
+        //Это место работы Загира.Все должно записаться вместе с лабиринтом в char[][] cellsWithPath
     }
 }

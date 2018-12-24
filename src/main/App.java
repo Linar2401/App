@@ -1,30 +1,36 @@
 package main;
 
 import Labyrinth.RandomLabyrinth;
-import commands.GeneratorOfLabyrinthCommand;
-import commands.ShowCommandsCommand;
-import commands.Command;
+import commands.*;
 import painter.PainterCells;
 import utils.CommandLineInterractor;
 
 
 public class App {
+    char[][] cells;
+    char[][] cellsWitnPath;
     private int height;
     private int width;
     private RandomLabyrinth lab;
     private PainterCells painterCells;
     private CommandLineInterractor cli = new CommandLineInterractor();
     private String[] commandsNames = {"Generate labyrinth","Show labyrinth in console","Find path","Show path in console",
-            "Save labyrinth image on disk","Show commandsNames"};
-    private Command[] Commands = {new GeneratorOfLabyrinthCommand(),new ShowCommandsCommand(),new ShowCommandsCommand()};
+            "Save labyrinth image on disk","Show commandsNames","Exit"};
+    private Command[] Commands = {new GeneratorOfLabyrinthCommand(),new ShowLabyrinthInCMD(),
+            new FindTheWayCommand(), new ShowPathInConsole(),new SavePathInImage(),new ShowCommandsCommand(),new ExitCommand()};
 
     public App() {
-        lab = new RandomLabyrinth(12,12);
-        lab.makeWall();
-        char[][] cells = lab.getCells();
-        painterCells = new PainterCells(12*2+1,12*2+1);
-        painterCells.save("image.png");
-
+        Commands[5].execute(this);
+        while (true){
+            cli.printWithNewLine("Enter the number of commands");
+            int in = cli.enterInt();
+            if (in > 0 && in <= commandsNames.length){
+                Commands[in-1].execute(this);
+            }
+            else {
+                cli.printWithNewLine("Incorrect number of command. Please try again.");
+            }
+        }
     }
 
     public String[] getCommandsNames() {
@@ -81,5 +87,21 @@ public class App {
 
     public void setCli(CommandLineInterractor cli) {
         this.cli = cli;
+    }
+
+    public char[][] getCells() {
+        return cells;
+    }
+
+    public void setCells(char[][] cells) {
+        this.cells = cells;
+    }
+
+    public char[][] getCellsWitnPath() {
+        return cellsWitnPath;
+    }
+
+    public void setCellsWitnPath(char[][] cellsWitnPath) {
+        this.cellsWitnPath = cellsWitnPath;
     }
 }

@@ -55,12 +55,12 @@ public class PainterCells {
             g2d.drawLine(i, step, i, size - step);
         }
     }
-    public void save(String path)  {
+    public void save(String path) throws IOException  {
         File file = new File(path);
         try {
             ImageIO.write(bufferedImage, path.substring(path.length()-3), file);
         } catch (IOException e) {
-            System.out.println("ImageIO.write error" + e.getMessage());
+            throw new IOException("Can't write image.");
         }
     }
 }

@@ -7,6 +7,8 @@ public class ShowCommandsCommand extends Command {
         app = app;
         System.out.print(" | ");
         for (int i = 0; i < app.getCommandsNames().length; i++){
+            System.out.print(" (");
+            System.out.print(i+1+")");
             System.out.print(app.getCommandsNames()[i]+" | ");
         }
         System.out.println();

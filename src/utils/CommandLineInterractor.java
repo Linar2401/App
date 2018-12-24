@@ -15,6 +15,9 @@ public class CommandLineInterractor implements Interractor {
     public String  entetString(){
         return scanner.nextLine();
     }
+    public void print(Object object){
+        this.print(object.toString());
+    }
     public int enterInt(){
         boolean isInt;
         int out = 0;
