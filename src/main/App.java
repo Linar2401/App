@@ -17,7 +17,7 @@ public class App {
     private String[] commandsNames = {"Generate labyrinth","Show labyrinth in console","Find path","Show path in console",
             "Save labyrinth image on disk","Show commandsNames","Exit"};
     private Command[] Commands = {new GeneratorOfLabyrinthCommand(),new ShowLabyrinthInCMD(),
-            new FindTheWayCommand(), new ShowPathInConsole(),new SavePathInImage(),new ShowCommandsCommand(),new ExitCommand()};
+            new FindTheWayCommand(), new ShowPathInConsole(),new SaveLabyrinthInImageCommand(),new ShowCommandsCommand(),new ExitCommand()};
 
     public App() {
         Commands[5].execute(this);

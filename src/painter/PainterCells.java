@@ -38,7 +38,6 @@ public class PainterCells {
     public PainterCells(int upBorder,int rightBorder) {
         this.numbersOfStep = Math.max(upBorder,rightBorder) + 2;
         this.size = numbersOfStep*40;
-
         String sx = "";
         String sy = "";
         step = size / (numbersOfStep);
