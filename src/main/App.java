@@ -9,7 +9,7 @@ import utils.CommandLineInterractor;
 public class App {
     char[][] cells;
     char[][] cellsWitnPath;
-    private int height;
+    private int size;
     private int width;
     private RandomLabyrinth lab;
     private PainterCells painterCells;
@@ -69,12 +69,12 @@ public class App {
         return cli;
     }
 
-    public int getHeight() {
-        return height;
+    public int getSize() {
+        return size;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public int getWidth() {
@@ -93,8 +93,9 @@ public class App {
         return cells;
     }
 
-    public void setCells(char[][] cells) {
-        this.cells = cells;
+    public void initCells(){
+        cells = lab.getCells();
+        cellsWitnPath = lab.getCells();
     }
 
     public char[][] getCellsWitnPath() {

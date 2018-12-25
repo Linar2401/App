@@ -1,6 +1,7 @@
 package commands;
 
 import main.App;
+import painter.PainterCells;
 
 import java.io.IOException;
 
@@ -8,9 +9,9 @@ public class SaveLabyrinthInImageCommand extends Command {
     public void execute(App app){
         app = app;
         boolean correctSaving = false;
-        //Эта команда также сохраняет просто лабиринт, без пути. Нужно спросить здесь, что сохранить. Если путь еще не создан, то нужно это написать.
-        //Это место работы Арслана. Тут оно зарисовывает нужные клетки нужными цветами.
-        app.getCli().print("Enter path of image");
+        app.setPainterCells(new PainterCells(app.getSize()*2+1));
+        app.getPainterCells().paintLabyrinth(app);
+        app.getCli().print("Enter path of image:");
         while(!correctSaving){
             correctSaving = true;
             try {

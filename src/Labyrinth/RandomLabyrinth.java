@@ -216,4 +216,9 @@ public class RandomLabyrinth extends Labyrinth {
         }
 
     }
+
+    @Override
+    public char[][] getCells() {
+        return cells;
+    }
 }

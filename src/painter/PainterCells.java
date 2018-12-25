@@ -1,5 +1,7 @@
 package painter;
 
+import main.App;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,41 +21,41 @@ public class PainterCells {
      * Size of cell in pixels
      */
     private int step;
-    /**
-     * left border of graph
-     */
-    private int rightBorder;
-    /**
-     * upper border of graph
-     */
-    private int upBorder;
-    /**
-     * BufferedImage variable
-     */
+
     private BufferedImage bufferedImage;
     /**
      * canvas of graph
      */
     private Graphics2D g2d;
-    public PainterCells(int upBorder,int rightBorder) {
-        this.numbersOfStep = Math.max(upBorder,rightBorder) + 2;
-        this.size = numbersOfStep*40;
-        String sx = "";
-        String sy = "";
-        step = size / (numbersOfStep);
+    public PainterCells(int numbersOfCells) {
+        step = 40;
+        numbersOfStep = numbersOfCells + 2;
+        size = numbersOfStep*step;
         bufferedImage = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
         g2d = bufferedImage.createGraphics();
         g2d.setColor(Color.white);
         g2d.fillRect(0, 0, size, size);
-        g2d.setColor(Color.black);
-        g2d.setStroke(new BasicStroke(size / 400));
-        for (int i = step; i <= size - step; i += step) {
-            g2d.drawString(sx, i - 40, size - step + 12);
-            g2d.drawString(sy, 15, i + 8);
-            g2d.drawLine(step, i, size - step, i);
-            g2d.drawLine(i, step, i, size - step);
+    }
+    public void paintLabyrinth(App app){
+        for (int i = 0; i < app.getSize()*2+1; i++){
+            for (int j = 0;j < app.getSize()*2+1;j++){
+                switch (app.getLab().getCells()[i][j]){
+                    case '#':
+                        g2d.setColor(Color.black);
+                        g2d.fillRect(40+j*40,40+i*40,40,40);
+                        break;
+                    case ' ':
+                        g2d.setColor(Color.white);
+                        g2d.fillRect(40+j*40,40+i*40,40,40);
+                        break;
+                    default:
+                        g2d.setColor(Color.RED);
+                        g2d.fillRect(40+j*40,40+i*40,40,40);
+                }
+            }
         }
     }
+
     public void save(String path) throws IOException  {
         File file = new File(path);
         try {
