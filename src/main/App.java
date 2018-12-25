@@ -10,24 +10,22 @@ public class App {
     char[][] cells;
     char[][] cellsWitnPath;
     private int size;
-    private int width;
     private RandomLabyrinth lab;
     private PainterCells painterCells;
     private CommandLineInterractor cli = new CommandLineInterractor();
-    private String[] commandsNames = {"Generate labyrinth","Show labyrinth in console","Find path","Show path in console",
-            "Save labyrinth image on disk","Show commandsNames","Exit"};
-    private Command[] Commands = {new GeneratorOfLabyrinthCommand(),new ShowLabyrinthInCMD(),
-            new FindTheWayCommand(), new ShowPathInConsole(),new SaveLabyrinthInImageCommand(),new ShowCommandsCommand(),new ExitCommand()};
+    private String[] commandsNames = {"Generate labyrinth", "Show labyrinth in console", "Find path", "Show path in console",
+            "Save labyrinth image on disk", "Show commandsNames", "Exit"};
+    private Command[] Commands = {new GeneratorOfLabyrinthCommand(), new ShowLabyrinthInCMD(),
+            new FindTheWayCommand(), new ShowPathInConsole(), new SaveLabyrinthInImageCommand(), new ShowCommandsCommand(), new ExitCommand()};
 
     public App() {
         Commands[5].execute(this);
-        while (true){
+        while (true) {
             cli.printWithNewLine("Enter the number of commands");
             int in = cli.enterInt();
-            if (in > 0 && in <= commandsNames.length){
-                Commands[in-1].execute(this);
-            }
-            else {
+            if (in > 0 && in <= commandsNames.length) {
+                Commands[in - 1].execute(this);
+            } else {
                 cli.printWithNewLine("Incorrect number of command. Please try again.");
             }
         }
@@ -35,10 +33,6 @@ public class App {
 
     public String[] getCommandsNames() {
         return commandsNames;
-    }
-
-    public Command[] getCommands() {
-        return Commands;
     }
 
     public RandomLabyrinth getLab() {
@@ -57,14 +51,6 @@ public class App {
         this.painterCells = painterCells;
     }
 
-    public void setCommandsNames(String[] commandsNames) {
-        this.commandsNames = commandsNames;
-    }
-
-    public void setCommands(Command[] Commands) {
-        this.Commands = Commands;
-    }
-
     public CommandLineInterractor getCli() {
         return cli;
     }
@@ -77,23 +63,12 @@ public class App {
         this.size = size;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public void setCli(CommandLineInterractor cli) {
-        this.cli = cli;
-    }
 
     public char[][] getCells() {
         return cells;
     }
 
-    public void initCells(){
+    public void initCells() {
         cells = lab.getCells();
         cellsWitnPath = lab.getCells();
     }
@@ -101,8 +76,6 @@ public class App {
     public char[][] getCellsWitnPath() {
         return cellsWitnPath;
     }
-
-    public void setCellsWitnPath(char[][] cellsWitnPath) {
-        this.cellsWitnPath = cellsWitnPath;
-    }
 }
+
+
