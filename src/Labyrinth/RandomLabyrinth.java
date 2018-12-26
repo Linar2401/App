@@ -13,11 +13,11 @@ import java.util.Random;
 public class RandomLabyrinth extends Labyrinth {
     private int width;
     private int height;
-    private static final char WALL = '#';
-    private static final char EMPTY = ' ';
+    private static final int WALL = -1;
+    private static final int EMPTY = -2;
     private static final int NOT_VISITED = -2;
     private static final int MAKE_WALL = -1;
-    private char[][] cells;
+    private int[][] cells;
     private int cur_width;       //current row
     private int cur_height;       //current column
 
@@ -46,7 +46,7 @@ public class RandomLabyrinth extends Labyrinth {
         width = cur_width * 2 + 1;
         height = cur_height * 2 + 1;
 
-        cells = new char[width][height];
+        cells = new int[width][height];
         current = new int[cur_height * 2 - 1];
         next = new int[cur_height * 2 - 1];
 
@@ -218,7 +218,7 @@ public class RandomLabyrinth extends Labyrinth {
     }
 
     @Override
-    public char[][] getCells() {
+    public int[][] getCells() {
         return cells;
     }
 }

@@ -40,11 +40,11 @@ public class PainterCells {
         for (int i = 0; i < app.getSize()*2+1; i++){
             for (int j = 0;j < app.getSize()*2+1;j++){
                 switch (app.getLab().getCells()[i][j]){
-                    case '#':
+                    case -1:
                         g2d.setColor(Color.black);
                         g2d.fillRect(40+j*40,40+i*40,40,40);
                         break;
-                    case ' ':
+                    case -2:
                         g2d.setColor(Color.white);
                         g2d.fillRect(40+j*40,40+i*40,40,40);
                         break;

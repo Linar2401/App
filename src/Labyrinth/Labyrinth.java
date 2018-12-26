@@ -10,7 +10,7 @@ An abstract class for creating Labyrinth
 public abstract class Labyrinth implements WallMaker, SetsJoiner, VerticalCutsMaker, LabyrinthShower, LastLineMaker, EEMaker {
     private int width;
     private int height;
-    private char[][] cells = new char[height][width];
+    private int[][] cells = new int[height][width];
 
     private int cur_width;       //current row
     private int cur_height;       //current column
@@ -35,7 +35,7 @@ public abstract class Labyrinth implements WallMaker, SetsJoiner, VerticalCutsMa
     /**
      * @return cells
      */
-    public char[][] getLabyrinth() {
+    public int[][] getLabyrinth() {
         return cells;
     }
 
@@ -57,5 +57,5 @@ public abstract class Labyrinth implements WallMaker, SetsJoiner, VerticalCutsMa
     public abstract void makeWall();
     public abstract void makeVerticalCuts();
 
-    public abstract char[][] getCells();
+    public abstract int[][] getCells();
 }

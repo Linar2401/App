@@ -7,8 +7,8 @@ import utils.CommandLineInterractor;
 
 
 public class App {
-    char[][] cells;
-    char[][] cellsWitnPath;
+    int[][] cells;
+    int[][] cellsWithPath;
     private int size;
     private RandomLabyrinth lab;
     private PainterCells painterCells;
@@ -64,17 +64,22 @@ public class App {
     }
 
 
-    public char[][] getCells() {
+    public int[][] getCells() {
         return cells;
     }
 
     public void initCells() {
         cells = lab.getCells();
-        cellsWitnPath = lab.getCells();
+        cellsWithPath = lab.getCells();
     }
 
-    public char[][] getCellsWitnPath() {
-        return cellsWitnPath;
+    public void changeCellsWithPath(int[][] a){
+        cellsWithPath = a;
+    }
+
+
+    public int[][] getCellsWithPath() {
+        return cellsWithPath;
     }
 }
 
