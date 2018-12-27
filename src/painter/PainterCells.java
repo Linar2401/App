@@ -48,7 +48,7 @@ public class PainterCells {
                         g2d.setColor(Color.white);
                         g2d.fillRect(40+j*40,40+i*40,40,40);
                         break;
-                    default:
+                    case 0:
                         g2d.setColor(Color.RED);
                         g2d.fillRect(40+j*40,40+i*40,40,40);
                 }
