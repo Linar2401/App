@@ -8,9 +8,7 @@ import java.util.Arrays;
 public class FindTheWayCommand extends Command {
     public void execute(App app) {
         int size = app.getSize() * 2;
-        int[][] cells = app.getCells();
-        int[][] cellsWithPath;
-        cellsWithPath = Arrays.copyOf(cells, cells.length);
+        int[][] cellsWithPath = app.getCellsWithPath();
         boolean stop;
         int dx[] = {1, 0, -1, 0};
         int dy[] = {0, 1, 0, -1};
@@ -46,7 +44,7 @@ public class FindTheWayCommand extends Command {
             d++;
         } while (!stop && cellsWithPath[tmpEx][size] == -2);
         app.changeCellsWithPath(cellsWithPath);
-        int len = cells[tmpEx][size];
+        int len = cellsWithPath[tmpEx][size];
         int[] px = new int[size * size];
         int[] py = new int[size * size];
         int x = size;
@@ -58,7 +56,7 @@ public class FindTheWayCommand extends Command {
             d--;
             for (int k = 0; k < 4; ++k)
                 if (y + dy[k] <= size - 1 && x + dx[k] <= size - 1)
-                    if (cells[y + dy[k]][x + dx[k]] == d) {
+                    if (cellsWithPath[y + dy[k]][x + dx[k]] == d) {
                         x = x + dx[k];
                         y = y + dy[k];
                         break;
@@ -67,7 +65,7 @@ public class FindTheWayCommand extends Command {
         px[0] = 0;
         py[0] = tmpEn;
         for (int i = 0; i < len + 1; ++i) {
-            cells[py[i]][px[i]] = 0;
+            cellsWithPath[py[i]][px[i]] = 0;
         }
     }
 }

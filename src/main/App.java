@@ -5,10 +5,12 @@ import commands.*;
 import painter.PainterCells;
 import utils.CommandLineInterractor;
 
+import java.util.Arrays;
+
 
 public class App {
-    int[][] cells;
-    int[][] cellsWithPath;
+    private int[][] cells;
+    private int[][] cellsWithPath;
     private int size;
     private RandomLabyrinth lab;
     private PainterCells painterCells;
@@ -69,8 +71,8 @@ public class App {
     }
 
     public void initCells() {
-        cells = lab.getCells();
-        cellsWithPath = lab.getCells();
+        cells = Arrays.copyOf(lab.getCells(), lab.getCells().length);
+        cellsWithPath = Arrays.copyOf(cells, cells.length);
     }
 
     public void changeCellsWithPath(int[][] a){
