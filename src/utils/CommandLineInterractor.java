@@ -35,4 +35,5 @@ public class CommandLineInterractor implements Interractor {
             }
         }
     }
+
 }
